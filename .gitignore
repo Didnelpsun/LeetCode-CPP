@@ -1,2 +1,7 @@
 /C/.vs/
 /C/Debug/
+
+/Csharp/packages
+/Csharp/obj/
+/Csharp/bin/
+/Csharp/.vs/
