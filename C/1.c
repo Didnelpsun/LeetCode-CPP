@@ -13,7 +13,7 @@
 // 官方的暴力枚举法
 //因为C语言中数组一般都需要提前分配内存，所以除了两个必须参数外还需要一个参数numsSize控制数组长度
 //int*表示这个变量为一个指向int类型的指针
-int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+int* twoSum_1(int* nums, int numsSize, int target, int* returnSize) {
     //首先从0开始遍历nums数组中的所有数字
     for (int i = 0; i < numsSize; ++i) {
         //因为是枚举，所以从当前遍历的变量开始的后一个变量检测是否能得到target值
