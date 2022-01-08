@@ -1,7 +1,4 @@
-/C/.vs/
-/C/Debug/
-
-/Csharp/packages
-/Csharp/obj/
-/Csharp/bin/
-/Csharp/.vs/
+/.idea/
+/.vscode/
+/build/
+/cmake-build-debug/
