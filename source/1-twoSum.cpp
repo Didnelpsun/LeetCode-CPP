@@ -4,27 +4,24 @@
 // 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 // 简单思路就是从第一个开始然后依次相加，比较目标值
 // 需要进行两层循环
 
-vector<int> twoSumAdd(vector<int> &nums, int target)
-{
+int *twoSumAdd(const int *nums, int target) {
     int i, j;
-    int size = nums.size();
+    int size = sizeof nums;
     // 初始化result，其中初始值为两个-1
-    vector<int> result(2, -1);
-    for (i = 0; i < size - 1; i++)
-    {
-        for (j = i + 1; j < size; j++)
-        {
-            if (nums[i] + nums[j] == target)
-            {
-                result.clear();
-                result.push_back(i);
-                result.push_back(j);
+    // 加上static表示是静态的，在堆区而不是栈区
+    static int result[2] = {-1, -1};
+    for (i = 0; i < size - 1; i++) {
+        for (j = i + 1; j < size; j++) {
+            if (nums[i] + nums[j] == target) {
+                result[0] = i;
+                result[1] = j;
                 return result;
             }
         }
@@ -44,22 +41,17 @@ vector<int> twoSumAdd(vector<int> &nums, int target)
 // 的用户
 
 // 进一步改进是将目标值与当前遍历值相减再比较当前值后面的所有值，这就不用每次都相加比较了
-vector<int> twoSumSub(vector<int> &nums, int target)
-{
+int *twoSumSub(const int *nums, int target) {
     int i, j, temp;
-    int size = nums.size();
+    unsigned int size = sizeof nums;
     // 初始化result，其中初始值为两个-1
-    vector<int> result(2, -1);
-    for (i = 0; i < size - 1; i++)
-    {
+    static int result[2] = {-1, -1};
+    for (i = 0; i < size - 1; i++) {
         temp = target - nums[i];
-        for (j = i + 1; j < size; j++)
-        {
-            if (temp == nums[j])
-            {
-                result.clear();
-                result.push_back(i);
-                result.push_back(j);
+        for (j = i + 1; j < size; j++) {
+            if (temp == nums[j]) {
+                result[0] = i;
+                result[1] = j;
                 return result;
             }
         }
@@ -78,7 +70,21 @@ vector<int> twoSumSub(vector<int> &nums, int target)
 // 87.08%
 // 的用户
 
-vector<int> twoSum(vector<int> &nums, int target)
-{
+int *getTwoSum(int *nums, int target) {
     return twoSumSub(nums, target);
+}
+
+void twoSum(int *nums, int target) {
+    cout << "题目:给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值target的那两个整数，并返回它们的数组下标。"
+         << endl;
+    cout << "输入:[";
+    for (int i = 0; i < sizeof nums; i++) {
+        cout << nums[i];
+        if (i != sizeof nums - 1)
+            cout << ",";
+    }
+    cout << "]" << endl;
+    cout << "输出:" << target << endl;
+    int *result = getTwoSum(nums, target);
+    cout << "说明:元素" << result[0] << "+" "元素" << result[1] << "=" << target << target;
 }

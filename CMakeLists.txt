@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.23)
 project(LeetCode_CPP)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 23)
 
-add_executable(LeetCode_CPP
-        0-main.cpp
-        1-twoSum.cpp)
+add_executable(LeetCode_CPP main.cpp)
